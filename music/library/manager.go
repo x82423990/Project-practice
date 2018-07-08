@@ -1,6 +1,8 @@
 package library
 
-import "errors"
+import (
+	"errors"
+)
 
 type MusicEntry struct {
 	Id     string
@@ -49,16 +51,17 @@ func (m *MusicManger) Add(music *MusicEntry)  {
 }
 
 func (m *MusicManger) Remove(index int) *MusicEntry {
-	if index<0 || index>=len(m.musics){
+	if index<=0 || index>len(m.musics){
 		return nil
 	}
-	removeMusic := &m.musics[index]
-	if index < len(m.musics)-1{
-		m.musics = append(m.musics[:index-1],m.musics[index+1:]...)
-	} else if index == 0{
-		m.musics = make([]MusicEntry,0)
-	}else{ // 删除最后一个元素
+	removeMusic := &m.musics[index-1]
+	if index < len(m.musics){
+		m.musics = append(m.musics[:index-1],m.musics[index:]...)
+	} else if len(m.musics) ==1 {
+		m.musics = make([]MusicEntry, 0)
+	} else{ // 删除最后一个元素
 		m.musics = m.musics[:index-1]
 	}
+
 	return removeMusic
 }

@@ -28,7 +28,7 @@ func TestOps(t *testing.T) {
 	if m == nil{
 		t.Error("MusicManger.Get() faild .", err)
 	}
-	m = mm.Remove(0)
+	m = mm.Remove(1)
 	if m ==nil || mm.Len() !=0{
 		t.Error("MusicManager.Remove faild", err)
 	}
