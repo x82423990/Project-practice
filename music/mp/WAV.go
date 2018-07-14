@@ -19,5 +19,3 @@ func (p * WAVPlayer)Play(source string){
 	}
 	fmt.Println("\nFinished WAV playing", source)
 }
-
-
