@@ -57,7 +57,6 @@ func (c *class) del(id int) *student{
 }
 
 
-
 var s1, s2,s3,s4,s5 student
 var c class
 var i =0
