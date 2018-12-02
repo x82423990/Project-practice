@@ -5,11 +5,10 @@ import (
 	"fmt"
 	"time"
 )
-
 func main() {
 	filename := "D:\\GOWORK\\tmp\\tail\\nginx.log"
 	tails, er := tail.TailFile(filename, tail.Config{
-		ReOpen:    true,
+		ReOpen:    false,
 		Follow:    true,
 		MustExist: false,
 		Poll:      true,
@@ -26,7 +25,7 @@ func main() {
 			time.Sleep(time.Second)
 			continue
 		}
-		fmt.Println("msg", msg)
+		fmt.Println("msg", msg.Text)
 	}
 
 }
