@@ -5,10 +5,11 @@ import (
 	"time"
 	"net/http"
 	"fmt"
+	"io/ioutil"
 )
 
 func main() {
-
+	process()
 }
 
 func process() {
@@ -23,10 +24,22 @@ func process() {
 		return
 	}
 	go func() {
-		resp, err := client.
+		resp, err := client.Do(req)
+		pack := Result{r:resp, err:err}
+		c <- pack
 	}()
+	select {
+	case <-ctx.Done():
+		tr.CancelRequest(req)
+		res := <- c
+		fmt.Println("timeout err:", res.err)
+	case res := <-c:
+	defer res.r.Body.Close()
+	//out:=res.r.Status
+	out, _ :=ioutil.ReadAll(res.r.Body)
+	fmt.Printf("server response %s:", out)
+	}
 }
-
 type Result struct {
 	r *http.Response
 	err error

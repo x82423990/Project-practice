@@ -89,6 +89,6 @@ func main() {
 	default:
 		fmt.Println("list参数列出服务器当前文件")
 		fmt.Println("-o 指定上传文件, 例如: oss.exe -o aaaa.txt")
-		fmt.Println("其他未知错误，请联系谢逸凡！")
+		fmt.Println("其他未知错误，请联系管理员！")
 	}
 }
