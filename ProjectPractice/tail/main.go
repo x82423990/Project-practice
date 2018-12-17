@@ -6,7 +6,7 @@ import (
 	"time"
 )
 func main() {
-	filename := "D:\\GOWORK\\tmp\\tail\\nginx.log"
+	filename := "D:\\GOWORK\\tmp\\tail\\nginx.logzap"
 	tails, er := tail.TailFile(filename, tail.Config{
 		ReOpen:    false,
 		Follow:    true,

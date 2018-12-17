@@ -8,7 +8,7 @@ import (
 
 func main() {
 	config := make(map[string]interface{})
-	config["filename"] = `D:\GOWORK\tmp\tail\nginx.log`
+	config["filename"] = `D:\GOWORK\tmp\tail\nginx.logzap`
 	config["level"] = logs.LevelInfo
 
 	configStr, err := json.Marshal(config)
